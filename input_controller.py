@@ -29,7 +29,6 @@ def tree(depth=-1, interval='', last_file=False):
     return '\n'
 
 def revise_node():
-    # print('revise')
     return 'revise'
 
 def break_prtn():
@@ -39,6 +38,8 @@ def break_prtn():
 
 def save_xmind():
     basenode.end = 'e'
+    basenode.main.plot_xmind(basenode.root)
+    basenode.main.save_xmin('t', 'mindmap')
     return 'End'
 
 def inpur_order(msg):
@@ -58,8 +59,9 @@ def inpur_order(msg):
     res = input(f'{msg}\n請輸入指令:')
     print(order_mapping.get(res, '請輸入正確指令')())
 
-def input_data():
+def input_data(main):
     work_start()
+    basenode.main = main
     while not basenode.end:
         inpur_order('查看結構 t, 新增節點 c, 新增子結點 n,  修改節點 r,回上一層 b, 結束 e')
 

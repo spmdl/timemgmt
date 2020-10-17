@@ -2,8 +2,8 @@ class BaseNode:
     def __init__(self):
         self.root = None
         self.now_node = None
-        self.first_node = None
         self.end = False
+        self.main = None
 
 
 class Node:
@@ -12,6 +12,7 @@ class Node:
         self.link = link
         self.child_node = []
         self.parent_node = None
+
 
 basenode = BaseNode()
 
