@@ -1,6 +1,5 @@
-from model import BaseNode, Node
+from model import basenode, work_start, create_node, next_node
 
-basenode = BaseNode()
 
 def tree(depth=-1, interval='', last_file=False):
     if depth == -1:
@@ -29,30 +28,9 @@ def tree(depth=-1, interval='', last_file=False):
 
     return '\n'
 
-def create_node():
-    new_node = input_node()
-    basenode.now_node.child_node.append(new_node)
-
-    # if not node_data.parent_node:
-    #     node_data.child_node.append(new_node)
-    return f'成功新增 {new_node.key} 節點'
-
-
 def revise_node():
     # print('revise')
     return 'revise'
-
-
-def next_node():
-    new_node = input_node()
-    _node = basenode.now_node
-    basenode.now_node = _node.child_node[-1]
-    basenode.now_node.child_node.append(new_node)
-    basenode.now_node.parent_node = _node
-
-    # return new_node
-    return f'成功新增 {new_node.key} 子節點'
-
 
 def break_prtn():
     now_node = basenode.now_node.parent_node
@@ -80,24 +58,10 @@ def inpur_order(msg):
     res = input(f'{msg}\n請輸入指令:')
     print(order_mapping.get(res, '請輸入正確指令')())
 
-
-def input_node():
-    node_name = input(f'請輸入子節點名稱:')
-    node_link = input(f'請輸入子節點連結:')
-    new_node = Node(node_name, node_link)
-    return new_node
-
-
-def work_start():
-    node_name = input(f'請輸入根節點名稱:')
-    node_link = input(f'請輸入根節點連結:')
-    res_node = Node(node_name, node_link)
-    basenode.root = res_node
-    basenode.now_node = res_node
-
+def input_data():
+    work_start()
     while not basenode.end:
         inpur_order('查看結構 t, 新增節點 c, 新增子結點 n,  修改節點 r,回上一層 b, 結束 e')
 
 if __name__ == '__main__':
-    # basenode = BaseNode()
-    work_start()
+    input_data()
