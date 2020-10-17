@@ -28,8 +28,8 @@
 3. 檢討：檢視 mindmap 找出改進的地方（批判性思維 ）
 
 ## Install
-[coolcode/tomato-clock](https://github.com/coolcode/tomato-clock)
-[zhuifengshen/xmind](https://github.com/zhuifengshen/xmind)
+* [coolcode/tomato-clock](https://github.com/coolcode/tomato-clock)
+* [zhuifengshen/xmind](https://github.com/zhuifengshen/xmind)
 請先學習 run 起上方兩個大神的專案（喜歡的可以給個 Star👍）
 
 ## Usage
