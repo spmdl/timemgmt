@@ -35,7 +35,7 @@
 ## Usage
 
 ```bash
-$ git clone https://github.com/spmdl/xmind.git
+$ git clone https://github.com/spmdl/timemgmt.git
 ```
 
 ```bash
