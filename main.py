@@ -1,5 +1,7 @@
 import xmind
 import time
+from input_controller import work_start
+
 
 class Mindmap:
     def __init__(self):
@@ -36,7 +38,7 @@ class Mindmap:
 if __name__ == "__main__" :
     mindmap = Mindmap()
     mindmap.creat_xmind()
-    mindmap.plot_xmind()
+    work_start()
     mindmap.save_xmin('t', 'mindmap')
 
 
