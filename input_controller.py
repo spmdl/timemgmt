@@ -28,8 +28,26 @@ def tree(depth=-1, interval='', last_file=False):
 
     return '\n'
 
+def change_node(res, target_node):
+    target_node.key = res.key
+    target_node.link = res.link
+    target_node.notes = res.notes
+    target_node.spend_time = res.spend_time
+
+def traversal_node(now_node, name):
+    for num, node in enumerate(now_node.child_node):
+        if node.key == name:
+            res = input_node()
+            change_node(res, node)
+            break
+        # 檢查子節點是否存在
+        if node.child_node:
+            traversal_node(node, name)
+
 def revise_node():
-    return 'revise'
+    target_node = input(f'請輸入要修改的節點名稱:')
+    traversal_node(basenode.root, target_node)
+    return f'修改成功'
 
 def break_prtn():
     if not basenode.now_node.parent_node: return f'已在最上層'

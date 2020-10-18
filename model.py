@@ -20,7 +20,7 @@ class Node:
 
 basenode = BaseNode()
 
-def input_node(spend_time):
+def input_node(spend_time=0):
     node_name = input(f'請輸入子節點名稱:')
     node_link = input(f'請輸入子節點連結:')
     node_notes = input(f'請輸入子節點備註:')
