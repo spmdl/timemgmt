@@ -4,46 +4,34 @@ class BaseNode:
         self.now_node = None
         self.end = False
         self.main = None
+        self.work_minutes = 25
+        self.break_minutes = 0
 
 
 class Node:
-    def __init__(self, name, link):
+    def __init__(self, name, link, node_notes, spend_time=0):
         self.key = name
         self.link = link
+        self.notes = node_notes
+        self.spend_time = spend_time
         self.child_node = []
         self.parent_node = None
 
 
 basenode = BaseNode()
 
-def create_node():
-    new_node = input_node()
-    basenode.now_node.child_node.append(new_node)
-
-    # if not node_data.parent_node:
-    #     node_data.child_node.append(new_node)
-    return f'成功新增 {new_node.key} 節點'
-
-def next_node():
-    new_node = input_node()
-    _node = basenode.now_node
-    basenode.now_node = _node.child_node[-1]
-    basenode.now_node.child_node.append(new_node)
-    basenode.now_node.parent_node = _node
-
-    # return new_node
-    return f'成功新增 {new_node.key} 子節點'
-
-def input_node():
+def input_node(spend_time):
     node_name = input(f'請輸入子節點名稱:')
     node_link = input(f'請輸入子節點連結:')
-    new_node = Node(node_name, node_link)
+    node_notes = input(f'請輸入子節點備註:')
+    new_node = Node(node_name, node_link, node_notes, spend_time)
     return new_node
 
 def work_start():
     node_name = input(f'請輸入根節點名稱:')
     node_link = input(f'請輸入根節點連結:')
-    res_node = Node(node_name, node_link)
+    node_notes = input(f'請輸入根節點備註:')
+    res_node = Node(node_name, node_link, node_notes)
     basenode.root = res_node
     basenode.now_node = res_node
 

@@ -2,7 +2,6 @@ import xmind
 import time
 from input_controller import input_data
 
-
 class Mindmap:
     def __init__(self):
         self.filename = 'my.xmind'
@@ -19,19 +18,27 @@ class Mindmap:
         sheet = self.workbook.getPrimarySheet()
         self.sheet = sheet
 
+    def set_node(self, subtopic, node):
+        if node.spend_time:
+            name = f'{node.key}\n{node.spend_time}'
+        else:
+            name = node.key
+        subtopic.setTitle(f'{name}')
+        if node.notes: subtopic.setPlainNotes(node.notes)
+        if node.link: subtopic.setURLHyperlink(node.link)
+
     def plot_subnode(self, node, topic):
         for num, node in enumerate(node.child_node):
-            subtopic = topic.addSubTopic()  # next node
-            subtopic.setTitle(node.key) # content
-            if node.link:subtopic.setURLHyperlink(node.link)
-
-            # 檢查子節點是否存在
+            # 創建子節點
+            subtopic = topic.addSubTopic()
+            self.set_node(subtopic, node)
+            # 判斷是否有下一層
             if node.child_node:
                 self.plot_subnode(node, subtopic)
 
     def plot_rootnode(self, node, sheet):
         root_topic = sheet.getRootTopic()  # creat root
-        root_topic.setTitle(node.key)  # set root name
+        self.set_node(root_topic, node)
         return root_topic
 
     def plot_xmind(self, node):
@@ -47,6 +54,7 @@ class Mindmap:
 
 if __name__ == "__main__" :
     mindmap = Mindmap()
+
 
 
 
